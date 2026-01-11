@@ -1,0 +1,16 @@
+chiffre d'affaire d'une vol precis
+
+SELECT 
+    v.id,
+    v.numero_vol,
+    SUM(p.montant) AS chiffre_affaires_total
+FROM 
+    vol v
+LEFT JOIN 
+    reservation r ON v.id = r.vol_id
+LEFT JOIN 
+    paiement p ON r.id = p.reservation_id AND p.statut = 'REUSSI'
+WHERE 
+    v.id = 1
+GROUP BY 
+    v.id, v.numero_vol;
