@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Utilisateurs</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div th:replace="~{fragments/header :: sidebar}"></div>
+
+    <div class="main-content">
+        <h1>Liste des Utilisateurs</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Rôle</th>
+                    <th>Actif</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="utilisateur : ${utilisateurs}">
+                    <td th:text="${utilisateur.id}"></td>
+                    <td th:text="${utilisateur.nom}"></td>
+                    <td th:text="${utilisateur.prenom}"></td>
+                    <td th:text="${utilisateur.email}"></td>
+                    <td th:text="${utilisateur.role}"></td>
+                    <td th:text="${utilisateur.actif}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

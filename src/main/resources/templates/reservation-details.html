@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Détails de la Réservation</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div th:replace="~{fragments/header :: sidebar}"></div>
+
+    <div class="main-content">
+        <h1>Détails de la Réservation</h1>
+        <div class="details-container" th:if="${reservation}">
+            <p><strong>ID:</strong> <span th:text="${reservation.id}"></span></p>
+            <p><strong>Référence:</strong> <span th:text="${reservation.reference}"></span></p>
+            <p><strong>Statut:</strong> <span th:text="${reservation.statut}"></span></p>
+            <!-- Autres détails de la réservation -->
+        </div>
+
+        <h2>Trace des Paiements</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Montant</th>
+                    <th>Statut</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="paiement : ${paiements}">
+                    <td th:text="${paiement.id}"></td>
+                    <td th:text="${paiement.montant}"></td>
+                    <td th:text="${paiement.statut}"></td>
+                    <td>
+                        <form th:if="${paiement.statut.name() == 'EN_ATTENTE'}" th:action="@{/paiements/{id}/confirmer(id=${paiement.id})}" method="post">
+                            <button type="submit">Confirmer le Paiement</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

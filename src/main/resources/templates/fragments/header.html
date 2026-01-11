@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div class="sidebar" th:fragment="sidebar">
+        <h2>Menu</h2>
+        <ul>
+            <li><a th:href="@{/vols/rechercher}">Rechercher un Vol</a></li>
+            <li><a th:href="@{/reservations/create}">Nouvelle Réservation</a></li>
+            <li><a th:href="@{/utilisateurs}">Utilisateurs</a></li>
+            <li><a th:href="@{/avions}">Avions</a></li>
+            <li><a th:href="@{/aeroports}">Aéroports</a></li>
+            <li><a th:href="@{/vols/create}">Créer un Vol</a></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Rechercher un Vol</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div th:replace="~{fragments/header :: sidebar}"></div>
+
+    <div class="main-content">
+        <h1>Rechercher un Vol</h1>
+        <form th:action="@{/vols/rechercher}" th:object="${rechercheVolDTO}" method="post">
+            <div>
+                <label for="villeDepart">Ville de Départ:</label>
+                <select id="villeDepart" th:field="*{villeDepart}">
+                    <option value="">-- Choisir une ville --</option>
+                    <option th:each="aeroport : ${aeroports}" th:value="${aeroport.ville}" th:text="${aeroport.ville}"></option>
+                </select>
+            </div>
+            <div>
+                <label for="villeArrivee">Ville d'Arrivée:</label>
+                <select id="villeArrivee" th:field="*{villeArrivee}">
+                    <option value="">-- Choisir une ville --</option>
+                    <option th:each="aeroport : ${aeroports}" th:value="${aeroport.ville}" th:text="${aeroport.ville}"></option>
+                </select>
+            </div>
+            <div>
+                <label for="dateDepart">Date de Départ:</label>
+                <input type="date" id="dateDepart" th:field="*{dateDepart}" />
+            </div>
+            <button type="submit">Rechercher</button>
+        </form>
+    </div>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

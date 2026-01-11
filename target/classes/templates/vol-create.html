@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Créer un Vol</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div th:replace="~{fragments/header :: sidebar}"></div>
+
+    <div class="main-content">
+        <h1>Créer un Vol</h1>
+        <form th:action="@{/vols}" th:object="${vol}" method="post">
+            <div>
+                <label for="numeroVol">Numéro de Vol:</label>
+                <input type="text" id="numeroVol" th:field="*{numeroVol}" />
+            </div>
+            <div>
+                <label for="aeroportDepartId">Aéroport de Départ:</label>
+                <select id="aeroportDepartId" th:field="*{aeroportDepartId}">
+                    <option value="">-- Choisir un aéroport --</option>
+                    <option th:each="aeroport : ${aeroports}" th:value="${aeroport.id}" th:text="${aeroport.nom} + ' (' + ${aeroport.code} + ')'"></option>
+                </select>
+            </div>
+            <div>
+                <label for="aeroportArriveeId">Aéroport d'Arrivée:</label>
+                <select id="aeroportArriveeId" th:field="*{aeroportArriveeId}">
+                    <option value="">-- Choisir un aéroport --</option>
+                    <option th:each="aeroport : ${aeroports}" th:value="${aeroport.id}" th:text="${aeroport.nom} + ' (' + ${aeroport.code} + ')'"></option>
+                </select>
+            </div>
+            <div>
+                <label for="dateDepart">Date de Départ:</label>
+                <input type="datetime-local" id="dateDepart" th:field="*{dateDepart}" />
+            </div>
+            <div>
+                <label for="dateArrivee">Date d'Arrivée:</label>
+                <input type="datetime-local" id="dateArrivee" th:field="*{dateArrivee}" />
+            </div>
+            <div>
+                <label for="prix">Prix:</label>
+                <input type="number" id="prix" th:field="*{prix}" />
+            </div>
+            <div>
+                <label for="placesDisponibles">Places Disponibles:</label>
+                <input type="number" id="placesDisponibles" th:field="*{placesDisponibles}" />
+            </div>
+            <div>
+                <label for="avionIds">Avion IDs (séparés par des virgules):</label>
+                <input type="text" id="avionIds" th:field="*{avionIds}" />
+            </div>
+            <button type="submit">Créer</button>
+        </form>
+    </div>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

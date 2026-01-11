@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Résultats de la Recherche de Vols</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div th:replace="~{fragments/header :: sidebar}"></div>
+
+    <div class="main-content">
+        <h1>Résultats de la Recherche</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Numéro de Vol</th>
+                    <th>Départ</th>
+                    <th>Arrivée</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="vol : ${vols}">
+                    <td th:text="${vol.numeroVol}"></td>
+                    <td th:text="${vol.villeDepart} + ' (' + ${vol.aeroportDepartCode} + ')'"></td>
+                    <td th:text="${vol.villeArrivee} + ' (' + ${vol.aeroportArriveeCode} + ')'"></td>
+                    <td>
+                        <a class="button" th:href="@{/reservations/create(volId=${vol.id})}">Réserver</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

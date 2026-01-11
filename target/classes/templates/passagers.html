@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Passagers</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <h1>Liste des Passagers</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom Complet</th>
+                <th>Date de Naissance</th>
+                <th>Numéro de Passeport</th>
+                <th>Référence Réservation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="passager : ${passagers}">
+                <td th:text="${passager.id}"></td>
+                <td th:text="${passager.getNomComplet()}"></td>
+                <td th:text="${passager.dateNaissance}"></td>
+                <td th:text="${passager.numeroPasseport}"></td>
+                <td th:text="${passager.reservationId}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

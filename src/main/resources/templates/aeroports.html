@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Aéroports</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div th:replace="~{fragments/header :: sidebar}"></div>
+
+    <div class="main-content">
+        <h1>Liste des Aéroports</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Code</th>
+                    <th>Nom</th>
+                    <th>Ville</th>
+                    <th>Pays</th>
+                    <th>Actif</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="aeroport : ${aeroports}">
+                    <td th:text="${aeroport.id}"></td>
+                    <td th:text="${aeroport.code}"></td>
+                    <td th:text="${aeroport.nom}"></td>
+                    <td th:text="${aeroport.ville}"></td>
+                    <td th:text="${aeroport.pays}"></td>
+                    <td th:text="${aeroport.actif}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

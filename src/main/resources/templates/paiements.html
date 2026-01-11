@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Paiements</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <h1>Liste des Paiements</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Référence Réservation</th>
+                <th>Montant</th>
+                <th>Mode de Paiement</th>
+                <th>Statut</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="paiement : ${paiements}">
+                <td th:text="${paiement.id}"></td>
+                <td th:text="${paiement.reservationId}"></td>
+                <td th:text="${paiement.montant}"></td>
+                <td th:text="${paiement.modePaiement}"></td>
+                <td th:text="${paiement.statut}"></td>
+                <td th:text="${paiement.datePaiement}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
